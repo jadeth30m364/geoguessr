@@ -30,7 +30,8 @@ async function initialize() {
     disableButton('check');
     disableButton('next');
     if(accumulated_distance == 0){
-      document.getElementById("totaldistance").innerHTML = 'Round Score: 0 Miles'; 
+      document.getElementById("totaldistance").innerHTML = 'Total Score: 0 Miles'; 
+      document.getElementById("totalmldistance").innerHTML = 'Total GeoEstimator Score: 0 Miles'; 
     }
     document.getElementById("location").innerHTML = ' ';
     document.getElementById("distance").innerHTML = ' '; 
@@ -118,12 +119,14 @@ function check(){
     enableButton('next');
     distance_from_guess = [];
     ml_distance = [];
+    var lat_error = (Math.random()*5)
+    var long_error = (Math.random()*5)
     var guess_error = (distance(guess_coordinates[0],guess_coordinates[1],true_location[0], true_location[1],'K'));
-    var ml_error = (Math.random() * 300);
-    ml_distance = ml_error
+    var ml_error = (distance(true_location[0] + lat_error, true_location[1] - long_error, true_location[0], true_location[1],'K'));
     accumulated_distance += parseFloat(guess_error);
-    ml_accumulated_distance += ml_error;
+    ml_accumulated_distance += parseFloat(ml_error);
     distance_from_guess = guess_error;
+    ml_distance = ml_error
 
     /*
     console.log("Guessed Location: " + guess_coordinates);
@@ -132,6 +135,7 @@ function check(){
     console.log("total guess error: " + accumulated_distance);
    */
     var true_coords = {lat: true_location[0], lng: true_location[1]};
+    var ml_coords = {lat: true_location[0] + lat_error, lng: true_location[1] - long_error};
     var guess_coords = {lat: guess_coordinates[0], lng: guess_coordinates[1]};
     var result_map = new google.maps.Map(document.getElementById('result'), {
     zoom: 2,
@@ -161,6 +165,14 @@ function check(){
     icon: {
       url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
     }
+  });
+  var ml_marker = new google.maps.Marker({
+    position: ml_coords, 
+    map: result_map,
+    title: 'True Location',
+    icon: {
+        url: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+      }
   });
 
   var flightPlanCoordinates = [
@@ -218,7 +230,7 @@ function randomLoc(){
     if (index > world_city_set.length -1){
         index = 0
         //console.log(index)
-        document.getElementById("totaldistance").innerHTML = 'Round Score: 0 Miles'; 
+        document.getElementById("totaldistance").innerHTML = 'Total Score: 0 Miles'; 
         swal({
             title: "Thanks For playing!",
             icon: "success",
@@ -245,7 +257,7 @@ function randomLoc(){
 function display_location(){
     document.getElementById("location").innerHTML = "Correct Location: " + current_name;
     document.getElementById("distance").innerHTML = "Your Guess was " + distance_from_guess + " Miles away";
-    document.getElementById("ml-distance").innerHTML = "GeoEstimator's Guess was " + String(ml_distance.toFixed(2)) + " Miles away";
+    document.getElementById("ml-distance").innerHTML = "GeoEstimator's Guess was " + ml_distance + " Miles away";
     document.getElementById("totaldistance").innerHTML = "Total Score: " + accumulated_distance.toFixed(1) + " Miles";
     document.getElementById("totalmldistance").innerHTML = "GeoEstimator Total Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
 
