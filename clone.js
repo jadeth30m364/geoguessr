@@ -179,6 +179,10 @@ function check(){
     true_coords, guess_coords,
     
   ];
+  var flightPlanCoordinates2 = [
+    true_coords, ml_coords,
+    
+  ];
   var lineSymbol = {
     path: 'M 0,-1 0,1',
     strokeOpacity: 1,
@@ -194,8 +198,18 @@ function check(){
         repeat: '15px'
       }],
   });
+  var flightPath2 = new google.maps.Polyline({
+    path: flightPlanCoordinates2,
+    strokeOpacity: 0,
+    icons: [{
+        icon: lineSymbol,
+        offset: '1',
+        repeat: '15px'
+      }],
+  });
 
   flightPath.setMap(result_map);
+  flightPath2.setMap(result_map);
   display_location();
   disableButton('check');
 }
