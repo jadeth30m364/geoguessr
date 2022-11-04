@@ -245,9 +245,9 @@ function randomLoc(){
 function display_location(){
     document.getElementById("location").innerHTML = "Correct Location: " + current_name;
     document.getElementById("distance").innerHTML = "Your Guess was " + distance_from_guess + " Miles away";
-    document.getElementById("ml-distance").innerHTML = "ML's Guess was " + String(ml_distance.toFixed(2)) + " Miles away";
-    document.getElementById("totaldistance").innerHTML = "Round Score: " + accumulated_distance.toFixed(1) + " Miles";
-    document.getElementById("totalmldistance").innerHTML = "ML Round Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
+    document.getElementById("ml-distance").innerHTML = "GeoEstimator's Guess was " + String(ml_distance.toFixed(2)) + " Miles away";
+    document.getElementById("totaldistance").innerHTML = "Total Score: " + accumulated_distance.toFixed(1) + " Miles";
+    document.getElementById("totalmldistance").innerHTML = "GeoEstimator Total Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
 
     
 }
