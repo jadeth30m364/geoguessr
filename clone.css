@@ -4,6 +4,9 @@ html, body {
   max-width: 1000px;
   min-width: 550px;
   margin:0 auto;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #eb4c36;
   
 }
 
@@ -40,17 +43,20 @@ html, body {
   border-width: 1px;
 }
 
-#location, #distance, #totaldistance{
+#location, #distance, #ml-distance, #totaldistance, #totalmldistance {
     font-size: 20px;
     text-align: center;
-    font-family: Chalkduster, fantasy;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-#location, #distance {
+#ml-distance, #distance {
   display: inline-block;
   margin-left: 20px;
 }
-
+#info {
+  text-align: center;
+}
 
 #check, #next{
   font-size: 15px;
@@ -60,13 +66,13 @@ html, body {
   width: 200px;
 }
 
-#buttons, #info{
+#buttons{
   text-align: center;
 }
 
 h1{
   text-align: center;
-  font-family: Chalkduster, fantasy;
+  color: #eb4c36;
 }
 
 #next{
@@ -84,7 +90,6 @@ h1{
 }
 
 #round {
-  font-family: Chalkduster, fantasy;
   font-size: 15px;
 }
 

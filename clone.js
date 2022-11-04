@@ -12,6 +12,8 @@ var true_location = [];
 var us_city_set = [4699066, 5809844, 4164138, 4440906,4894465, 2562501];
 var world_city_set =[3143244, 3599699, 1857910, 4853608, 323786];
 var accumulated_distance = 0;
+var ml_distance = [];
+var ml_accumulated_distance = 0;
 var current_name = '';
 var distance_from_guess = [];
 var check_count = 0;
@@ -115,8 +117,12 @@ function check(){
 
     enableButton('next');
     distance_from_guess = [];
+    ml_distance = [];
     var guess_error = (distance(guess_coordinates[0],guess_coordinates[1],true_location[0], true_location[1],'K'));
+    var ml_error = (Math.random() * 300);
+    ml_distance = ml_error
     accumulated_distance += parseFloat(guess_error);
+    ml_accumulated_distance += ml_error;
     distance_from_guess = guess_error;
 
     /*
@@ -239,7 +245,11 @@ function randomLoc(){
 function display_location(){
     document.getElementById("location").innerHTML = "Correct Location: " + current_name;
     document.getElementById("distance").innerHTML = "Your Guess was " + distance_from_guess + " Miles away";
+    document.getElementById("ml-distance").innerHTML = "ML's Guess was " + String(ml_distance.toFixed(2)) + " Miles away";
     document.getElementById("totaldistance").innerHTML = "Round Score: " + accumulated_distance.toFixed(1) + " Miles";
+    document.getElementById("totalmldistance").innerHTML = "ML Round Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
+
+    
 }
 
 function disableButton(id){
