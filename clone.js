@@ -31,7 +31,7 @@ async function initialize() {
     disableButton('next');
     if(accumulated_distance == 0){
       document.getElementById("totaldistance").innerHTML = 'Total Score: 0 Miles'; 
-      document.getElementById("totalmldistance").innerHTML = 'Total GeoEstimator Score: 0 Miles'; 
+      document.getElementById("totalmldistance").innerHTML = 'Total GeoKnowr Score: 0 Miles'; 
     }
     document.getElementById("location").innerHTML = ' ';
     document.getElementById("distance").innerHTML = ' '; 
@@ -271,9 +271,9 @@ function randomLoc(){
 function display_location(){
     document.getElementById("location").innerHTML = "Correct Location: " + current_name;
     document.getElementById("distance").innerHTML = "Your Guess was " + distance_from_guess + " Miles away";
-    document.getElementById("ml-distance").innerHTML = "GeoEstimator's Guess was " + ml_distance + " Miles away";
+    document.getElementById("ml-distance").innerHTML = "GeoKnowr's Guess was " + ml_distance + " Miles away";
     document.getElementById("totaldistance").innerHTML = "Total Score: " + accumulated_distance.toFixed(1) + " Miles";
-    document.getElementById("totalmldistance").innerHTML = "GeoEstimator Total Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
+    document.getElementById("totalmldistance").innerHTML = "GeoKnowr Total Score: " + ml_accumulated_distance.toFixed(2) + " Miles";
 
     
 }
