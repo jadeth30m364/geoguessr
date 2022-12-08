@@ -244,13 +244,17 @@ function randomLoc(){
     if (index > world_city_set.length -1){
         index = 0
         //console.log(index)
+        document.getElementById("ml-distance").innerHTML = ' ';
         document.getElementById("totaldistance").innerHTML = 'Total Score: 0 Miles'; 
+        document.getElementById("totalmldistance").innerHTML = 'Geoknowr Total Score: 0 Miles'; 
         swal({
             title: "Thanks For playing!",
             icon: "success",
-            text: "Your Guessing was only off by " + accumulated_distance.toFixed(1) + " Miles This Round!"
+            text: "Your Guessing was only off by " + accumulated_distance.toFixed(1) + " Miles This Round!",
+            text: "Geoknowr's Guessing was only off by " + ml_accumulated_distance.toFixed(2) + " Miles This Round!"
         });
         accumulated_distance = 0;
+        ml_accumulated_distance = 0;
         document.getElementById('round').innerHTML = "Round:  1/" + world_city_set.length
         document.getElementById("next").innerHTML= "Next Location";
         return[world_city_set[0]]
