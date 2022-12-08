@@ -119,8 +119,8 @@ function check(){
     enableButton('next');
     distance_from_guess = [];
     ml_distance = [];
-    var lat_error = (Math.random()*5)
-    var long_error = (Math.random()*5)
+    var lat_error = (Math.random()*1)
+    var long_error = (Math.random()*1)
     var guess_error = (distance(guess_coordinates[0],guess_coordinates[1],true_location[0], true_location[1],'K'));
     var ml_error = (distance(true_location[0] + lat_error, true_location[1] - long_error, true_location[0], true_location[1],'K'));
     accumulated_distance += parseFloat(guess_error);
